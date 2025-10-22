@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chatbot Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="sidebar">
-    <h2>Dashboard</h2>
-    <ul>
-      <li class="active">💬 Chats</li>
-      <li>🤖 Bots</li>
-      <li>📈 Reportes</li>
-      <li>⚙️ Configuración</li>
-    </ul>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Dashboard</h2>
+      <ul>
+        <li class="active">💬 Chats</li>
+        <li>🤖 Bots</li>
+        <li>📈 Reportes</li>
+        <li>⚙️ Configuración</li>
+      </ul>
+    </div>
 
-  <div class="main">
-    <header>
-      <div class="stats">
-        <div class="card"><h3>320</h3><p>Mensajes hoy</p></div>
-        <div class="card"><h3>45</h3><p>Chats activos</p></div>
-        <div class="card"><h3>8s</h3><p>Tiempo promedio</p></div>
-      </div>
-    </header>
-
-    <section class="chat-section">
-      <aside class="chat-list">
-        <input type="text" placeholder="Buscar chat..." id="searchInput">
-        <ul id="chatUsers">
-          <!-- Se rellena con JS -->
-        </ul>
-      </aside>
-
-      <div class="chat-window">
-        <div id="chatMessages" class="chat-messages"></div>
-        <div class="chat-input">
-          <input type="text" id="messageInput" placeholder="Escribe un mensaje..." />
-          <button id="sendBtn">➤</button>
+    <div class="main">
+      <header>
+        <div class="stats">
+          <div class="card">
+            <h3>320</h3>
+            <p>Mensajes hoy</p>
+          </div>
+          <div class="card">
+            <h3>45</h3>
+            <p>Chats activos</p>
+          </div>
+          <div class="card">
+            <h3>8s</h3>
+            <p>Tiempo promedio</p>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </header>
 
-  <script src="app.js"></script>
-</body>
+      <section class="chat-section">
+        <aside class="chat-list">
+          <input type="text" placeholder="Buscar chat..." id="searchInput" />
+          <ul id="chatUsers"></ul>
+        </aside>
+
+        <div class="chat-window">
+          <div id="chatMessages" class="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Escribe un mensaje..." />
+            <button id="sendBtn">➤</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
 </html>

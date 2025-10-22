@@ -1,31 +1,45 @@
-const chatUsers = document.getElementById('chatUsers');
-const chatMessages = document.getElementById('chatMessages');
-const messageInput = document.getElementById('messageInput');
-const sendBtn = document.getElementById('sendBtn');
 
-// Lista simulada de usuarios
-const users = [
-  { id: 1, name: 'Usuario 123', status: 'Activo' },
-  { id: 2, name: 'Usuario 145', status: 'Espera' },
-];
 
-users.forEach((u) => {
-  const li = document.createElement('li');
-  li.textContent = `${u.name} (${u.status})`;
-  li.onclick = () => openChat(u.id, u.name);
-  chatUsers.appendChild(li);
-});
+if (typeof document !== 'undefined') {
+  const chatUsers = document.getElementById('chatUsers');
+  const chatMessages = document.getElementById('chatMessages');
+  const messageInput = document.getElementById('messageInput');
+  const sendBtn = document.getElementById('sendBtn');
 
-function openChat(id, name) {
-  chatMessages.innerHTML = '';
-  const msg = document.createElement('div');
-  msg.classList.add('message', 'bot');
-  msg.textContent = `Hola ${name}, soy tu bot. ¿Cómo puedo ayudarte?`;
-  chatMessages.appendChild(msg);
+  // usuarios 
+  const users = [
+    { id: 1, name: 'Usuario 123', status: 'Activo' },
+    { id: 2, name: 'Usuario 145', status: 'Espera' }
+  ];
+
+  if (chatUsers) {
+    users.forEach((u) => {
+      const li = document.createElement('li');
+      li.textContent = `${u.name} (${u.status})`;
+      li.onclick = () => openChat(u.id, u.name);
+      chatUsers.appendChild(li);
+    });
+  }
+
+  function openChat(id, name) {
+    if (!chatMessages) return;
+    chatMessages.innerHTML = '';
+    const msg = document.createElement('div');
+    msg.classList.add('message', 'bot');
+    msg.textContent = `Hola ${name}, soy tu bot. ¿Cómo puedo ayudarte?`;
+    chatMessages.appendChild(msg);
+  }
+
+  if (sendBtn) {
+    sendBtn.onclick = sendMessage;
+  }
 }
 
-// Enviar mensaje simulado
-sendBtn.onclick = () => {
+export function sendMessage() {
+  const messageInput = document.getElementById('messageInput');
+  const chatMessages = document.getElementById('chatMessages');
+  if (!messageInput || !chatMessages) return;
+
   const text = messageInput.value.trim();
   if (!text) return;
 
@@ -35,7 +49,6 @@ sendBtn.onclick = () => {
   chatMessages.appendChild(msg);
   messageInput.value = '';
 
-  // Simular respuesta del bot (aquí irá el backend)
   setTimeout(() => {
     const reply = document.createElement('div');
     reply.classList.add('message', 'bot');
@@ -43,4 +56,4 @@ sendBtn.onclick = () => {
     chatMessages.appendChild(reply);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }, 1000);
-};
+}
