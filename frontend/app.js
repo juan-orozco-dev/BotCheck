@@ -1,5 +1,3 @@
-
-
 if (typeof document !== 'undefined') {
   const chatUsers = document.getElementById('chatUsers');
   const chatMessages = document.getElementById('chatMessages');
